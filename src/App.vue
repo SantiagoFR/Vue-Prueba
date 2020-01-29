@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <b-row>
-      <b-col v-for="(photo,i) in photos" :key="i" xl="2" lg="3" md="6" class="mt-5">
-        <b-card :title="'Imagen '+photo.id" :img-src="photo.url" >
-          <b-button pill size="sm" href="#"  v-b-toggle="'accordion-' + photo.id" variant="outline-info">Mostrar/ocultar descripción</b-button>
+    <b-row cols="1" cols-md="2" cols-lg="4"  cols-xl="5">
+      <b-col v-for="(photo,i) in photos" :key="i" class="mt-5">
+        <b-card :title="'Photo '+photo.id" :img-src="photo.url" >
+          <b-button pill size="sm" href="#"  v-b-toggle="'accordion-' + photo.id" variant="outline-info">Show/hide description</b-button>
           <b-collapse :id="'accordion-'+photo.id">
             <br>
             <b-card-text>{{photo.title}}</b-card-text>
           </b-collapse>          
           <template v-slot:footer>
-            <b-button pill size="sm" variant="outline-danger" @click="deleteItem(i,photo.id)">Eliminar imagen</b-button>
+            <b-button pill size="sm" variant="outline-danger" @click="deleteItem(i,photo.id)">Delete photo</b-button>
           </template>          
         </b-card>
       </b-col>
